@@ -18,3 +18,7 @@ Install packages in R
 •	Working with Head, Tail, Str, Summary, dim and colnames
 •	Analyzing a biological dataset structure in R
 •	The use of $ in R
+
+3rd video playlist
+•R pivot_longer introduction
+⁠•How to change the format of a dataset from wide to long using "pivot_longer" in three various methods
