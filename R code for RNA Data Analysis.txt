@@ -1,0 +1,36 @@
+library("tidyverse")
+
+counts <- read.csv("data/GSE60450_GeneLevel_Normalized(CPM.and.TMM)_data.csv")
+
+sampleinfo <- read.csv("data/GSE60450_filtered_metadata.csv")
+
+
+colnames(counts)[1] <- "gene_id"
+colnames(sampleinfo)[1] <- "sample_id"
+
+view(counts)
+view(sampleinfo)
+
+
+seqdata <- pivot_longer(counts, cols = starts_with("GSM"),
+                        names_to = "Sample", values_to = "Count")
+
+
+seqdata <- pivot_longer(counts, cols = GSM1480291:GSM1480302,
+                        names_to = "Sample", values_to = "Count")
+
+seqdata <- pivot_longer(counts, cols = -c("gene_id", "gene_symbol"),
+                        names_to = "Sample", values_to = "Count")
+
+
+view(seqdata)
+
+
+
+allinfo <- full_join(seqdata, sampleinfo, by = c("Sample"="sample_id"))
+
+
+view(allinfo)
+
+
+
