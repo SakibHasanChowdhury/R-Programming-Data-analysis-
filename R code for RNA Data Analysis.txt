@@ -32,5 +32,5 @@ allinfo <- full_join(seqdata, sampleinfo, by = c("Sample"="sample_id"))
 
 view(allinfo)
 
-
+ggplot(data = allinfo, mapping = aes(x = sample, y = count)) + geom_boxplot()
 
