@@ -8,6 +8,40 @@ sampleinfo <- read.csv("data/GSE60450_filtered_metadata.csv")
 colnames(counts)[1] <- "gene_id"
 colnames(sampleinfo)[1] <- "sample_id"
 
+sampleinfo
+dim(sampleinfo)
+dim(counts)
+
+view(sampleinfo)
+> colnames(sampleinfo)
+
+sampleinfo$characteristics
+sampleinfo$X
+sampleinfo$characteristics[1:3]
+sampleinfo$characteristics[2:5]
+
+colnames(sampleinfo)[1]
+colnames(sampleinfo)[1] <- "sample_id"
+> 
+> view(sampleinfo)
+> 
+> view(counts)
+> 
+> colnames(counts)
+
+
+> colnames(count)[1] <- "gene_id"
+
+
+> view(counts)
+> 
+> 
+> str(sampleinfo)
+
+summary(sampleinfo)
+summary(counts)
+
+
 view(counts)
 view(sampleinfo)
 
@@ -15,9 +49,11 @@ view(sampleinfo)
 seqdata <- pivot_longer(counts, cols = starts_with("GSM"),
                         names_to = "Sample", values_to = "Count")
 
+view(seqdata)
 
 seqdata <- pivot_longer(counts, cols = GSM1480291:GSM1480302,
                         names_to = "Sample", values_to = "Count")
+view(seqdata)
 
 seqdata <- pivot_longer(counts, cols = -c("gene_id", "gene_symbol"),
                         names_to = "Sample", values_to = "Count")
@@ -27,10 +63,18 @@ view(seqdata)
 
 
 
+
+
 allinfo <- full_join(seqdata, sampleinfo, by = c("Sample"="sample_id"))
 
 
 view(allinfo)
 
-ggplot(data = allinfo, mapping = aes(x = sample, y = count)) + geom_boxplot()
 
+ggplot(data = allinfo, mapping = aes(x = sample,y = counts)) +geom_boxplot()
+
+ggplot(data = allinfo, mapping = aes(x = sample,y = log2(counts))) + geom_boxplot()
+
+ggplot(data = allinfo, mapping = aes(x = sample,y = log2(counts))) + geom_violin()
+
+ggplot(data = allinfo, mapping = aes(x = sample, y = log2(counts + 1 ))), colour = sample) + geom_violin()
