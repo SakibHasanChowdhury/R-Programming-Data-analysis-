@@ -23,3 +23,9 @@ Install packages in R
 3rd video playlist
 •R pivot_longer introduction
 ⁠•How to change the format of a dataset from wide to long using "pivot_longer" in three various methods
+
+4th video Bioinformatics, Biostatistics and Computational Biology / Episode 04 - Data Visualization with GGPLOT2
+•	Data Visualization
+•	GGPLOT2 Introduction
+•	Data Visualization in R using GGPLOT2 working on a real dataset
+•	Different Visualization methods 
